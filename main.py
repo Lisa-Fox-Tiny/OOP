@@ -17,12 +17,8 @@ class Student:
             return 'Error'
 
     def __str__(self):
-        grade_list = []
-        sum_grade = []
-        for course, grade in self.grades.items():
-            grade_list.append(len(grade))
-            sum_grade.append(sum(grade))
-            self.average = sum(sum_grade) / sum(grade_list)
+        grade_list = sum(self.grades.values(), [])
+        self.average = sum(grade_list) / len(grade_list)
         res = f'Имя: {self.name} \nФамилия: {self.surname} \nСредняя оценка за домашние задания: {self.average} \nКурсы в процессе изучения: {", ".join(self.courses_in_progress)}\nЗавершенные курсы: {", ".join(self.finished_courses)}'
         return res
 
@@ -46,12 +42,8 @@ class Lecturer(Mentor):
         self.grades = {}
 
     def __str__(self):
-        grade_list = []
-        sum_grade = []
-        for course, grade in self.grades.items():
-            grade_list.append(len(grade))
-            sum_grade.append(sum(grade))
-            self.average = sum(sum_grade) / sum(grade_list)
+        grade_list = sum(self.grades.values(), [])
+        self.average = sum(grade_list) / len(grade_list)
         res = f'Имя: {self.name} \nФамилия: {self.surname} \nСредняя оценка за лекции: {self.average}'
         return res
 
